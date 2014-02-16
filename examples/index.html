@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ext.ux.SpeechRecognition.js</title>
+        <link href="http://cdn.sencha.com/ext/gpl/4.2.1/resources/ext-theme-neptune/ext-theme-neptune-all.css" type="text/css" rel="stylesheet" />
+        </style>
+        <script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script>
+        <script src="../src/ux/Ext.ux.SpeechRecognition.js"></script>
+        <script>
+            Ext.onReady(function(){
+                var speech = Ext.create('Ext.ux.SpeechRecognition', {
+                    maxAlternatives: 2,
+                    continuous: true,
+                    interimResults: true,
+                    logFinalOnly: true,
+                    chainTranscripts: true,
+                    listeners: {
+                        result: function( speechObj, store, rawResults, e ){
+                            Ext.getCmp( 'Results' ).update( speech.getCurrentTranscript() );
+                        },
+                        end: function( speechObj, timeStamp, e ) {
+                            Ext.getCmp( 'Results' ).update( '<strong>Final Transcript: </strong>' + speech.getCurrentTranscript() );
+                        }
+                    }
+                });
+                Ext.create('Ext.toolbar.Toolbar', {
+                    items: [
+                        {
+                            text: 'Start',
+                            handler: function() {
+                                speech.start();
+                            }
+                        },
+                        {
+                            text: 'End',
+                            handler: function() {
+                                speech.stop();
+                            }
+                        }
+                    ],
+                    renderTo: Ext.getBody()
+                });
+                Ext.create('Ext.panel.Panel', {
+                    id: 'Results',
+                    title: 'Speech to Text Results',
+                    html: 'Nothing yet...',
+                    bodyPadding: 20,
+                    renderTo: Ext.getBody()
+                })
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
