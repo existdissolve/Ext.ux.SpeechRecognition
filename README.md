@@ -7,4 +7,4 @@ The SpeechRecognition class provides a handy wrapper to the (currently webkit on
 
 A plugin for interacting with components will be coming in the future, although the extent of the currently supported events make integration with current components rather trivial.
 
-A demo of this is can be found here: https://fiddle.sencha.com/#fiddle/3lt
+A demo of this is can be found here: https://fiddle.sencha.com/#fiddle/3lu
