@@ -294,6 +294,13 @@ Ext.define( 'Ext.ux.SpeechRecognition', {
         return me.calculateDuration( me.durations.timer.start, me.durations.timer.end );
     },
     /**
+     *
+     */
+    getResults: function() {
+        var me = this;
+        return me.results;
+    },
+    /**
      * @private
      * Calculates the duration of a timer object
      * @return {Float}
