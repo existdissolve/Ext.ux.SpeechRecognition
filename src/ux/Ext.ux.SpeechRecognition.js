@@ -88,7 +88,9 @@ Ext.define( 'Ext.ux.SpeechRecognition', {
                 { name: 'transcript', type: 'string' },
                 { name: 'isFinal', type: 'boolean', defaultValue: false },
                 { name: 'isMostConfident', type:'boolean', defaultValue: false },
-                { name: 'timeStamp', type: 'int' }
+                { name: 'timeStamp', type: 'int' },
+                { name: 'emma' },
+                { name: 'interpretation' }
             ]
         });
         me.interimTranscript = '';
@@ -357,7 +359,10 @@ Ext.define( 'Ext.ux.SpeechRecognition', {
                     confidence: alternative.confidence,
                     isFinal: result.isFinal,
                     timeStamp: e.timeStamp,
-                    isMostConfident: x==0 ? true : false
+                    isMostConfident: x==0 ? true : false,
+                    emma: e.emma,
+                    interpretation: e.interpretation
+                    
                 };
                 // add to raw cache
                 rawResults.push( hash );
